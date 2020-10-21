@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Calculations";
+}
+@model KassaTest.Models.CalculationsResult
+    <div>
+        @Html.ActionLink("<-- Назад", "Index", "Home")
+    </div>
+    <div class="row h4">
+        <div class="col-md-4 col-md-push-1"> Платеж за период: @Model.Payment руб.</div>
+    </div>
+    <div class="row">
+        <div class="col-md-10 col-md-push-1">
+            <table class="table table-striped">
+                <tbody>
+                    <tr>
+                        <th>
+                            №
+                        </th>
+                        <th>
+                            Дата
+                        </th>
+                        <th>
+                            Основной платеж
+                        </th>
+                        <th>
+                            Проценты
+                        </th>
+                        <th>
+                            Остаток Кредита
+                        </th>
+                    </tr>
+                    @foreach (var row in Model.Results)
+                    { 
+                        <tr>
+                            <td>@row.Number</td>
+                            <td>@row.Date</td>
+                            <td>@row.BodyPayment</td>
+                            <td>@row.PercentPayment</td>
+                            <td>@row.Balance</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row h4" >
+        <div class="col-md-4 col-md-push-8" > Сумма переплаты: @Model.Overpayment руб.</div>
+    </div>
